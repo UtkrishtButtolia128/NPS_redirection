@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+<body>
+<script>
+  // A) read the score & email from the URL
+  const p = new URLSearchParams(window.location.search);
+  const score = p.get('score'), email = p.get('email');
+
+  // B) quietly call your Apps‑Script to log them
+  fetch(
+    'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'
+     + '?score=' + encodeURIComponent(score)
+     + '&email=' + encodeURIComponent(email),
+    { mode: 'no-cors' }
+  );
+
+  // C) then send the browser on to your Brevo form,
+  //    including the same score & email in its URL
+  window.location.replace(
+    'https://sibforms.com/serve/MUIFAEWJ…'
+     + '?score=' + encodeURIComponent(score)
+     + '&email=' + encodeURIComponent(email)
+  );
+</script>
+</body>
+</html>
